@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Loan Form</title>
+  <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+
+<div id="loan-denied">
+  <h1 id="loan-denied-text"></h1>
+</div>
+
+<h1>Add Loan</h1>
+<form method="post">
+  <h3>Interest rate is 5% by default</h3>
+  <label for="loanName">Loan Title:</label>
+  <input type="text" id="loanName" name="loanName"><br>
+
+  <label for="loanAmount">Loan Amount:</label>
+  <input type="number" id="loanAmount" name="loanAmount"><br>
+
+  <label for="term">Term:</label>
+  <textarea id="term" name="term"></textarea><br>
+
+  <label for="months">Time in months:</label>
+  <input type="number" id="months" name="months"><br>
+
+  <div id="loan-calculation">
+    <div id="total-loan">Total amount of refund: </div>
+    <div id="monthly-loan">Monthly amount of refund: </div>
+  </div>
+
+  <button name="submitButton" id="addLoan">Add Loan</button>
+  <button name="calculateLoan" id="calculateLoan">Calculate Loan</button>
+
+</form>
+
+<script type="module" src="../js/addLoan.js"></script>
+</body>
+</html>

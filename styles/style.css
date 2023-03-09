@@ -1,0 +1,162 @@
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    /*
+    text-align: center;
+    */
+    margin-left: 300px;
+    color: #333;
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 18px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="tel"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 95%;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+#users {
+    margin-top: 20px;
+/*    display: grid;
+    grid-template-columns: repeat(2, 300px);*/
+}
+
+.user-container, .loan-container {
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 300px;
+    margin-left: 300px;
+    max-width: 500px;
+    border-radius: 10px;
+    background-color: lightcoral;
+}
+
+.loan-user {
+    background-color: lightgreen;
+    width: 100%;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.user-info div {
+    margin-bottom: 5px;
+}
+
+.show-loans {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.show-loans:hover {
+    background-color: #0062cc;
+}
+
+.prime-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 300px;
+    margin-top: 20px;
+}
+
+.prime-btn:first-child {
+    margin-top: 50px;
+}
+
+/* Hover animation */
+.prime-btn:hover {
+    background-color: #0062cc;
+}
+
+#btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover animation */
+#btn:hover {
+    background-color: #0062cc;
+}
+
+#loan-calculation {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.inner-btn {
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.inner-btn:hover {
+    background-color: #0062cc;
+}
+
+.delete-btn {
+    background-color: red;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
