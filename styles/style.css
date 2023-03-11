@@ -160,3 +160,17 @@ input[type="tel"] {
 .delete-btn:hover {
     background-color: darkred;
 }
+
+.btn-container {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+form {
+    margin-top: 20px;
+}
+
+#warning {
+    color: red;
+}

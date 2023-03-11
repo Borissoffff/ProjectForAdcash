@@ -4,3 +4,7 @@ export function getHrefAttribute(name) {
     const urlParams = new URLSearchParams(queryString);
     return urlParams.get(name);
 }
+
+export function activateDeleteButtons() {
+
+}

@@ -8,7 +8,15 @@ const blackListDao = new BlackListDao();
 
 const addLoanBtn = document.getElementById("addLoan");
 const calculateLoanBtn = document.getElementById("calculateLoan");
-const loanCalculationsection = document.getElementById('loan-calculation');
+const loanCalculationSection = document.getElementById('loan-calculation');
+
+const nameField = document.getElementById('loanName');
+const amountField = document.getElementById('loanAmount');
+const termField = document.getElementById('term');
+const monthsField = document.getElementById('months');
+
+const totalLoanField = document.getElementById('total-loan');
+const monthlyLoanField = document.getElementById('monthly-loan');
 
 const userId = getHrefAttribute('user');
 
@@ -24,22 +32,22 @@ addLoanBtn.addEventListener("click", async (e) => {
     e.preventDefault();
     const loan = createLoanObject();
 
-    await loanDao.saveLoan(loan);
+    if (loan) {
+        await loanDao.saveLoan(loan);
 
-    window.location = "../index.html";
+        window.location = "../index.html";
+    }
 })
 
 calculateLoanBtn.addEventListener("click", async (e) => {
     e.preventDefault();
-    loanCalculationsection.style.display = "none";
-    document.getElementById('total-loan').innerText = "";
-    document.getElementById('monthly-loan').innerText = "";
+    loanCalculationSection.style.display = "none";
 
-    const amount = parseInt(document.getElementById('loanAmount').value);
-    const months = parseInt(document.getElementById('months').value);
+    totalLoanField.innerText = "";
+    monthlyLoanField.innerText = "";
 
-    console.log(amount);
-    console.log(months);
+    const amount = parseInt(amountField.value);
+    const months = parseInt(monthsField.value);
 
     let fullReturn = amount + amount * 0.05;
     fullReturn = Math.round(fullReturn * 100) / 100;
@@ -48,25 +56,31 @@ calculateLoanBtn.addEventListener("click", async (e) => {
     let monthlyReturn = eachMonth + eachMonth * 0.05;
     monthlyReturn = Math.round(monthlyReturn * 100) / 100;
 
-    document.getElementById('total-loan').innerText += "Total amount of refund:  " + fullReturn + "€";
-    document.getElementById('monthly-loan').innerText += "Monthly amount of refund:  " + monthlyReturn + "€";
-    loanCalculationsection.style.display = "unset";
+    totalLoanField.innerText += "Total amount of refund:  " + fullReturn + "€";
+    monthlyLoanField.innerText += "Monthly amount of refund:  " + monthlyReturn + "€";
+
+    loanCalculationSection.style.display = "unset";
 })
 
 function createLoanObject() {
-    const name = document.getElementById('loanName').value;
-    const amount = document.getElementById('loanAmount').value;
-    const term = document.getElementById('term').value;
-    const months = document.getElementById('months').value;
+    const name = nameField.value;
+    const amount = amountField.value;
+    const term = termField.value;
+    const months = monthsField.value;
 
-    return new Loan(userId, name, amount, term, months);
+    if (name === "" || amount === "" || term === "" || months === "") {
+        document.getElementById('warning').innerText = "All fields have to be filled!";
+        return false;
+    } else {
+        return new Loan(userId, name, amount, term, months);
+    }
 }
 
 function disableInputs() {
-    document.getElementById('loanName').disabled = true;
-    document.getElementById('loanAmount').disabled = true;
-    document.getElementById('term').disabled = true;
-    document.getElementById('months').disabled = true;
+    nameField.disabled = true;
+    amountField.disabled = true;
+    termField.disabled = true;
+    monthsField.disabled = true;
     addLoanBtn.disabled = true;
     calculateLoanBtn.disabled = true;
 }

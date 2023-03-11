@@ -8,7 +8,6 @@ const userDao = new UserDao();
 const userId = getHrefAttribute('user');
 
 const loansDiv = document.getElementById("loans");
-const info = document.getElementById("info");
 
 if (userId) {
     showUserLoans();
@@ -27,6 +26,7 @@ async function showAllLoans() {
         let user = await userDao.getUserById(loan.userId);
         await addLoanContainer(loan, user);
     }
+    activateDeleteButtons();
 }
 
 async function showUserLoans() {
@@ -44,9 +44,11 @@ async function showUserLoans() {
         name.style.display = "none";
     }
     document.getElementById('loan-info-label').innerText += ` of ${user.firstName} ${user.lastName}`;
+
+    activateDeleteButtons();
 }
 
-async function addLoanContainer(loan, user) {
+function addLoanContainer(loan, user) {
 
     const loanContainer = document.createElement('div');
     loanContainer.classList.add('loan-container');
@@ -62,13 +64,20 @@ async function addLoanContainer(loan, user) {
             `<div><b>Return Monthly:</b> ${loan.monthlyReturn}&euro;</div>\n` +
             `<div><b>Term:</b> ${loan.term}</div>\n` +
         "</div>\n" +
-        `<button id='delete-loan' class=\"inner-btn delete-btn\">Delete Loan</button><br>\n`;
+        `<button id='delete-loan' value='${loan.id}' class=\"inner-btn delete-btn\">Delete Loan</button><br>\n`;
         loansDiv.appendChild(loanContainer);
+}
 
-        document.getElementById('delete-loan').addEventListener('click', () => {
+function activateDeleteButtons() {
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+    console.log(deleteButtons);
+    for (let i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].onclick = function () {
+            let loanId = this.value;
 
-            loanDao.deleteLoanById(loan.id);
+            loanDao.deleteLoanById(loanId);
 
             window.location = "../index.html";
-        })
+        }
+    }
 }
