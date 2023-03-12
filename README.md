@@ -8,13 +8,10 @@ Local deployment guideline:
 1. clone repository
 2. click "database" on right of the PHPStorm
 3. click "+" symbol
-4. add sqlite
+4. select sqlite as data source
 5. leave name by default "identifier.sqlite" and press "add".
 6. test connection from the file /api/db_connection.php by running script (should return exit code 0)
-7. Paste sql script in identifier.sqlite and commit it.
-8. from the root directory run command "php -S localhost:8080"
-9. feel free to use it :)
-
+7. paste sql script in identifier.sqlite and commit it.
 
 ``` sql
 PRAGMA foreign_keys = ON;
@@ -50,4 +47,7 @@ CREATE TABLE black_list (
     on delete cascade
 );
 ```
+
+8. run command "php -S localhost:8080" from the root directory
+9. feel free to use it :)
 
